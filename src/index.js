@@ -27,12 +27,25 @@ module.exports =   function toReadable (number) {
             
             return ones[digits[0]] + hundred + " " + ones[split_part2];
         }
+
+        if (digits[1]==0) {
         
-        let a=ones[digits[0]] + hundred;
-        let b=tens[digits[1]];
-        let c=ones[digits[2]];
-        return `${a} ${b} ${c}`.trim();
-        //return ones[digits[0]] + hundred + " " + tens[digits[1]]  + " " + ones[digits[2]]; 
+            return ones[digits[0]] + hundred + " " + ones[digits[2]];
+        }
+
+        if (digits[2]==0) {
+            part3 = parseInt(digits[1] + digits[2], 10);
+            split_part3=part3.toString();
+            
+            return ones[digits[0]] + hundred + " " + tens[split_part3];
+        
+            //return ones[digits[0]] + hundred + " " + tens[digits[1]];
+        }
+        
+      
+        result =  ones[digits[0]] + hundred + " " + tens[digits[1]]  + " " + ones[digits[2]]; 
+        return result.trim();
+       
     }
     }
 
